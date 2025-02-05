@@ -1,3 +1,7 @@
+# Card-en-Ciel damage calcuator
+
+https://yasaidori.github.io/CeC-damage-calculator/
+
 ツール名：Card-en-Ciel damage calcuator
 バージョン:1.00
 初期版公開:2025/02/06
