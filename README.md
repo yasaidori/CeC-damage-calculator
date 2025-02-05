@@ -5,3 +5,6 @@
 
 このツールは、インティ・クリエイツから発売されている、
 ぶっ壊れ爽快カードバトルRPG「カルドアンシェル」のダメージ計算の非公式シミュレーターです。
+
+
+This a unofficial calcuator tool for "Card-en-Ciel" ("Card-en-Ciel" is published by INTI CREATES.)
