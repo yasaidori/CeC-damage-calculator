@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Card-en-Ciel calculator🌈📱</title>
+    
+    
+    
+    
+    
+    <style>
+        
+        
+        
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        
+        .title{
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .languagechange button{
+            font-size: 14px;
+            font-style: normal;
+            min-height: 32px;
+        }
+        
+        .input-container {
+            display: flex;
+            align-items: flex-start; /* テキストボックスの縦を揃える */
+        }
+        .input-group-container {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            
+        }
+        .input-group {
+           display: flex;
+            
+            align-items: center;
+            margin-bottom: 10px;
+            //background-image: linear-gradient(60deg, rgba(50, 0, 0, 1) ,rgba(80,0,0,1),rgba(50, 0, 0, 1));
+            
+        }
+        
+        
+        
+        .input-group label {
+            margin-right: 10px;
+            margin-top: 0px;
+            width: 150px; /* ラベルの幅を固定 */
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+           
+        }
+        .input-group input {
+           
+            
+        }
+        .preset-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+        .preset-buttons button {
+            margin-bottom: 5px;
+            text-align: left;
+            min-height: 26px;
+        }
+        
+        .input-group img{
+            width: 16px;
+            height: 16px;
+            padding-top:2px;
+        }
+        
+        
+        .damagetableimage { 
+            max-width: 840px; 
+        }
+
+        
+        .damagetableimage img { 
+            width: 100%;
+        }
+
+        .result{
+            display: flex;
+            flex:initial;
+            width: 33%;
+            min-width: 360px;
+            min-height: 180px;
+            flex-direction: column;
+            flex: 0%;
+            
+             background-image: linear-gradient(60deg, rgba(50, 0, 0, 1) ,rgba(80,0,0,1),rgba(50, 0, 0, 1));
+            
+            color: #ffffff;
+            
+        }
+        
+        .resultvalue{
+            display: flex;
+            flex: 0;
+            flex-direction: row;
+            padding: 8px 0px 0px 16px;
+            
+            min-width: 180px;
+            min-height: 32px;
+            
+            font-size: 24px;
+            font-weight: bold;
+            
+            color: #ffffff;
+        }
+        
+        
+        
+        .multipleeffect{
+            display: flex;
+            flex: 0;
+            flex-direction: row;
+            padding: 0px 0px 0px 16px;
+            
+            min-width: 180px;
+            min-height: 0px;
+            
+            font-size: 16px;
+            font-weight: bold;
+            
+            color: #ffffff;
+        }
+        
+        .formula {
+            //margin-right: 10px;
+            //margin-top: 0px;
+            //text-align: center;
+            display: flex;
+            flex:auto;
+            flex-direction: column;
+            //flex-direction: row;
+            //justify-content: flex-start;
+           
+        }
+        .formula img{
+            width: 16px;
+            height: 16px;
+            padding-top: 2px;
+        }
+        
+        .formula_calcuation{
+            
+        }
+        
+        .glitchyourwaytovictory{
+            padding: 8px 32px 16px 0px;
+            flex-direction: column;
+            margin-right: 0;
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: 0;
+            background: linear-gradient(150deg, rgba(255, 176, 177, 1), rgba(252, 199, 174, 1) 10%, rgba(246, 246, 175, 1) 30%, rgba(179, 255, 173, 1) 50%, rgba(178, 249, 235, 1) 70%, rgba(194, 160, 255, 1) 90%, rgba(177, 134, 208, 1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+            font-weight: bold;
+            display: inline-block;
+            
+            
+            
+            letter-spacing : 0px;                
+            
+            
+            opacity: 1;
+            
+}
+        
+        
+    </style>
+</head>
+<body>
+    
+    
+    <div class="title" id="title">カルアンダメージ計算機</div>
+    <div class="languagechange">
+        <button onclick="toggleLanguage('jp');" flex: auto  id="language">日本語</button>
+        <button onclick="toggleLanguage('en');" flex: auto  id="language">English</button>
+        </div>
+    <div class="input-container">
+        <div class="input-group-container">
+            <div class="input-group">
+                <label for="damage">
+                    <img src="damage+.png" style="opacity:0;"><div id="basedamage">元のダメージ:</div></label>
+                <input type="number" id="damage" style="width:60px;" value="" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label for="boost">
+                    <img src="boost.png"> <div id="boost">ブースト:</div></label>
+                <input type="number" id="input_boost" style="width:60px;" value="" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label for="damagePlus">
+                    <img src="damage+.png"> <div id="damageplus">ダメージ+:</div></label>
+                <input type="number" id="damagePlus" style="width:60px;" value="" oninput="calculate()">
+            </div>
+            
+            <label><div id="ratio">ダメージ増加の効果:</div></label>
+            <div class="input-group">
+                <input type="radio" id="a1" name="coeff" value="1" onchange="calculate()"><div id="single">1倍</div>
+            
+                <input type="radio" id="a2" name="coeff" value="2" onchange="calculate()" checked="checked"><div id="double">2倍</div>
+            
+                <input type="radio" id="a4" name="coeff" value="4" onchange="calculate()"><div id="quadruple">4倍</div>
+            </div>
+            <div class="input-group"><p></p>
+                <input type="radio" id="acustom" name="coeff" value="1" onchange="calculate()"><div id="custom">カスタム:</div>
+                <input type="number" id="acustominput" style="width:60px;" value="" oninput="calculate()">
+            </div>
+            
+        </div>
+        
+        
+        <div class="preset-buttons">
+            <button onclick="setPreset(29)" id="Blade_of_Retribution">29 (復讐の刃)</button>
+    <button onclick="setPreset(54)" id="Blade_of_Retribution_SP">54 (復讐の刃 必殺)</button>
+    <button onclick="setPreset(18)" id="Demon_Hunter_the_Eldest">18 (悪魔ハンター姉)</button>
+    <button onclick="setPreset(38)" id="Demon_Hunter_the_Eldest_SP">38 (悪魔ハンター姉 必殺)</button>
+    <br>
+            <div flex: min-content;>
+    <button onclick="clearInput()" flex: auto id="clear">クリア</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="result">
+
+        <div class="resultvalue"><span id="result">?</span><div id="cardtext_damage">ダメージ。</div></div><div class="multipleeffect"><span id="multiple">ダメージ増加の効果が?倍。</span></div>
+        <div class="glitchyourwaytovictory"><span id="glitchyourwaytovictory"> </span></div>
+    </div>
+    
+    
+    
+    <div class="formula">
+    
+    <div id="formula">計算式:</div><div class="formula_calcuation">(<span id="result_D">?</span>&nbsp;+&nbsp;<img src="boost.png"><span id="result_X">?</span>&nbsp;*&nbsp;<span id="result_AX">?</span>)&nbsp;*&nbsp;(1&nbsp;+&nbsp;<img src="damage+.png"><span id="result_Y">&nbsp;?&nbsp;</span>*&nbsp;0.1&nbsp;*&nbsp;<span id="result_AY">?</span>)&nbsp;=&nbsp;</div>
+        <div class="formula_calcuation"><span id = "result2_boosted">?</span>&nbsp;*&nbsp;<span id = result2_multiplied>?</span>&nbsp;=&nbsp;<span id = "result2">?</span></div>
+    
+
+    </div>
+    
+        <p class="damagetableimage">
+    <img src="damagetable.png" id ="damagetable">
+        </p>
+    
+    
+    <script>
+        
+        const messages = {
+            jp: {
+                title:          "カルアンダメージ計算機",
+                basedamage:     "元のダメージ:",
+                boost:          "ブースト:",
+                damageplus:     "ダメージ+:",
+                ratio:          "ダメージ増加の効果:",
+                single:         "1倍",
+                double:         "2倍",
+                quadruple:      "4倍",
+                custom:         "カスタム:",
+                cardtext_damage:        "ダメージ。",
+                cardtext_damageratio:   "ダメージ増加の効果が{0}倍。",
+                cardtext_damageratio_2:   "ダメージ増加の効果が{0}倍。",
+                cardtext_2x:    "2",
+                cardtext_4x:    "4",
+                catchphrase:     "ぶっ壊れ爽快<br>&nbsp;カードバトルRPG",
+                formula:        "計算式:"
+            },
+            en: {
+                title:          "Card-en-Ciel calculator",
+                basedamage:     "base damage:",
+                boost:          "boost:",
+                damageplus:     "damage+:",
+                ratio:          "damage boost effects:",
+                single:         "1x",
+                double:         "2x",
+                quadruple:      "4x",
+                custom:         "custom:",
+                cardtext_damage:        "damage.",
+                cardtext_damageratio:   "{0}x all damage boost effects.",
+                cardtext_damageratio_2:   "{0} all damage boost effects.",
+                cardtext_2x:   "Double",
+                cardtext_4x:   "Quadruple",
+                catchphrase:    "<i>\"Glitch\"<br>&nbsp; &nbsp;your way to victory!</i>",
+                formula:        "Calculation formula:"
+            }
+        };
+
+        const buttons = {
+            jp: {
+                language_jp:                   "日本語",
+                language_en:                   "English",
+                Blade_of_Retribution:       "29 (復讐の刃)",
+                Blade_of_Retribution_SP:    "54 (復讐の刃 必殺)",
+                Demon_Hunter_the_Eldest:    "18 (悪魔ハンター姉)",
+                Demon_Hunter_the_Eldest_SP: "38 (悪魔ハンター姉 必殺)",
+                clear:                      "クリア"
+                },
+            en: {
+                language_jp:                   "日本語",
+                language_en:                   "English",
+                Blade_of_Retribution:       "29 (Blade of Retribution)",
+                Blade_of_Retribution_SP:    "54 (Blade of Retribution SP)",
+                Demon_Hunter_the_Eldest:    "18 (Demon Hunter the Eldest)",
+                Demon_Hunter_the_Eldest_SP: "38 (Demon Hunter the Eldest SP)",
+                clear:                      "Clear"
+                },
+        };
+
+        const images = {
+            jp: {
+                damagetable:    "damagetable.png"
+                },
+            en: {
+                damagetable:    "damagetable_en.png"
+                }
+        };
+        
+        let currentLanguage = 'jp';
+        
+        window.onload = (event) => {
+           if(window.navigator.language!="ja"){
+               toggleLanguage('en');
+           }
+        };
+
+        
+        
+        function setPreset(value) {
+            document.getElementById('damage').value = value;
+            calculate();
+        }
+
+        function calculate() {
+            let D = parseFloat(document.getElementById('damage').value);
+            let X = parseFloat(document.getElementById('input_boost').value);
+            let Y = parseFloat(document.getElementById('damagePlus').value);
+            let A = 1;
+            
+            let acustomflag  = document.querySelector('input[name="coeff"]:checked').id ==="acustom" ? true : false;
+            
+            if(acustomflag){
+                A = parseFloat(document.getElementById('acustominput').value);
+            }else{
+              A = parseFloat(document.querySelector('input[name="coeff"]:checked').value);
+            }
+            
+            
+            
+            //入力が不正なら0として扱う
+            
+            if (isNaN(X)) {
+                X = 0;
+            }
+            
+            if (isNaN(Y)) {
+                Y = 0;
+            }
+            
+            if (isNaN(D)) {
+                D = 0;
+            }
+
+            if (isNaN(A)) {
+                A = 1;
+            }
+            
+            let AX = A;
+            let AY = A;
+            
+            let result2 = ((D + X * AX) * (10 + Y * AY)/10);
+            let result2_boosted = (D + X * AX);
+            let result2_multiplied = (10 + Y * AY)/10;
+            let result = Math.max(Math.min(Math.ceil(result2),999) , 0);
+            
+            let resulthtml = result + (currentLanguage === 'jp' ? "" : "&nbsp;");
+
+           
+            
+            
+            if (result>Math.max(Math.ceil(D),0)){
+            resulthtml = "<span style=\"color:#00ff00;\">"+resulthtml+"</span>";
+            }else if(result<Math.min(D,999)){
+            resulthtml = "<span style=\"color:#ff0000;\">"+resulthtml+"</span>";
+            }
+            
+            document.getElementById('result').innerHTML = resulthtml;
+            
+            
+            document.getElementById('result_D').innerText = D;
+            document.getElementById('result_X').innerText = X;
+            document.getElementById('result_AX').innerText = AX;
+            document.getElementById('result_AY').innerText = AY;
+            document.getElementById('result_Y').innerText = Y;
+            document.getElementById('result2_boosted').innerText = result2_boosted;
+            document.getElementById('result2_multiplied').innerText = result2_multiplied;
+            document.getElementById('result2').innerText = result2;
+            
+            
+            
+            if (A!=1){
+                    document.getElementById('multiple').innerText = messages[currentLanguage].cardtext_damageratio.replace("{0}", A);
+                
+                if (!acustomflag){
+                    if (A==2){
+                    document.getElementById('multiple').innerText = messages[currentLanguage].cardtext_damageratio_2.replace("{0}", messages[currentLanguage].cardtext_2x);
+                    }
+                    if (A==4){
+                    document.getElementById('multiple').innerText = messages[currentLanguage].cardtext_damageratio_2.replace("{0}", messages[currentLanguage].cardtext_4x);
+                    }
+                }
+                
+            }else{
+                document.getElementById('multiple').innerText = "";
+            }
+            
+            if (result>=999){
+            document.getElementById('glitchyourwaytovictory').innerHTML = messages[currentLanguage].catchphrase;}else{
+                document.getElementById('glitchyourwaytovictory').innerHTML ="";}
+            
+        }
+        
+        function clearInput() {
+            
+            document.getElementById('damage').value = "";
+            document.getElementById('input_boost').value = "";
+            document.getElementById('damagePlus').value = "";
+            document.getElementById('acustominput').value = "";
+            //document.querySelector('input[name="coeff"]:checked').checked=false;
+            document.getElementById('a2').checked=true;
+            calculate();
+            
+        }
+        
+        function toggleLanguage(selectedLanguage) {
+            
+            currentLanguage = selectedLanguage;
+            
+            Object.keys(messages[currentLanguage]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerText = messages[currentLanguage][key];
+                }
+            });
+            
+            Object.keys(buttons[currentLanguage]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerText = buttons[currentLanguage][key];
+                }
+            });
+            
+            Object.keys(images[currentLanguage]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.src = images[currentLanguage][key];
+                }
+            });
+            
+            calculate();
+            
+            
+        }
+        calculate();
+    </script>
+</body>
+</html>
