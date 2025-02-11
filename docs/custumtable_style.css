@@ -1,0 +1,75 @@
+.customtable {
+    width: 40%;
+    margin-left: 20px;
+    border-collapse: collapse;
+    background: linear-gradient(150deg, rgba(255, 176, 177, 1), rgba(252, 199, 174, 1) 10%, rgba(246, 246, 175, 1) 30%, rgba(179, 255, 173, 1) 50%, rgba(178, 249, 235, 1) 70%, rgba(194, 160, 255, 1) 90%, rgba(177, 134, 208, 1));
+    
+}
+.customtable th, .customtable td {
+    border: 1px solid #ddd;
+    padding: 1.5px;
+    min-width: 40px;
+    min-height: 40px;
+    text-align: center;
+    white-space: nowrap;
+
+    
+}
+.customtable th {
+    //background-color: #f2f2f2;
+}
+
+.customtable_header {
+    background-color: #f2f2f2;
+    
+}
+
+.customtable_cellcolor {
+    background-color: #ffffff;
+    
+}
+
+.customtable_boost {
+    
+    
+}
+
+.customtable_top-left-cell{
+    height: 0px;
+    width: 0px;
+    text-align: start;
+    border: solid;
+    font-size: 90%;
+    background-color: #ffffff;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+.highlight {
+    background-color: #ffff99; /* ハイライト色 */
+}
+
+@media (max-width: 520px) {
+           .icon {
+            width: 12px;
+            height: 12px;
+}
+            .customtable th, .customtable td {
+                font-size: 90%;
+                min-width: 0px;
+                min-height: 0px;
+    }
+    
+}
+
+.glitchyourwaytovictory_table{
+            background: linear-gradient(150deg, rgba(255, 176, 177, 1), rgba(252, 199, 174, 1) 10%, rgba(246, 246, 175, 1) 30%, rgba(179, 255, 173, 1) 50%, rgba(178, 249, 235, 1) 70%, rgba(194, 160, 255, 1) 90%, rgba(177, 134, 208, 1));
+            opacity: 0.9;
+            
+}
+
+
+
+
