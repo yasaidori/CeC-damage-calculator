@@ -1,12 +1,13 @@
 
         
         let currentLanguage = 'jp';
-        
         window.onload = (event) => {
            if(window.navigator.language!="ja"){
                toggleLanguage('en');
+               createTable(29,0,0,2);
            }
         };
+        
 
         
         
@@ -152,5 +153,6 @@
             
         }
         calculate();
+        
         // 表を生成
         createTable(29,0,0,2);
