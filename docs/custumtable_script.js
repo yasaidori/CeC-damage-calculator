@@ -66,12 +66,12 @@ function createTable(X, DamageStart, BoostStart , A) {
             let resultHTML = `<a title="${result_cell}">${result_cell2}</a>`;
             
             
-            if ((damageValue >= 0 && damageValue <= 2 && boostValue >= 0 && boostValue <= 2)&&!(damageValue == 0 && boostValue == 0)) {
+            if (((damageValue >= 0 && damageValue <= 2 && boostValue >= 0 && boostValue <= 2)&&!(damageValue == 0 && boostValue == 0))&&(result_cell2<999)) {
                 td.style.color = '#c0c0c0';
             }
             
             if (result_cell2>=999){
-                td.style.color = '#000000';
+                //td.style.color = '#000000';
                 td.classList.remove('customtable_cellcolor');
                 td.style.opacity = '1';
             }

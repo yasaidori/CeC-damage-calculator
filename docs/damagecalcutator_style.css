@@ -1,5 +1,29 @@
-    body {
+    :root {
+            --darklight-text: #000000;
+            --darklight-bg: #ffffff;
+}
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --darklight-text: #f0f0f0;
+            --darklight-bg: #0f0f0f;
+        }
+        
+        a:link{
+            color:#8dbbff;
+        }
+        
+        a:visited{
+            color:#cd9cfd;
+        }
+        
+}
+        
+
+
+body {
         font-family: sans-serif;
+        color: var(--darklight-text);
+        background-color: var(--darklight-bg);
     }
 
 
