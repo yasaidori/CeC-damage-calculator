@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="targetdamage_style.css">
     <meta name="viewport" content="width=device-width">
 
+    @media (max-width: 960px) {
+            .contents input {
+                font-size: 18px;    
+                padding: 3px;
+                size:20;
+                }
+                    
+    }
+
+    
 </head>
 <body>
     
@@ -32,7 +42,7 @@
             <div class="input-group_num">
                 <label for="damage">
                     <img src="damage+.png" style="opacity:0;"><div id="basedamage">元のダメージ:</div></label>
-                <input type="number" id="damage" style="width:80px; font-size:18px;" value="" oninput="calculate()">
+                <input type="number" id="damage" style="width:80px;" value="" oninput="calculate()">
             </div>
             <div class="input-group_num">
                 <label for="input_boost">
