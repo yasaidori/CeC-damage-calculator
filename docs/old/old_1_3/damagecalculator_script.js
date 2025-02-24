@@ -2,8 +2,10 @@
         
         let currentLanguage = 'jp';
         window.onload = (event) => {
-           
-           
+           if(window.navigator.language!="ja"){
+               toggleLanguage('en');
+               createTable(29,0,0,2);
+           }
         };
         
 
@@ -114,6 +116,7 @@
             document.getElementById('input_boost').value = "";
             document.getElementById('damagePlus').value = "";
             document.getElementById('acustominput').value = "";
+            //document.querySelector('input[name="coeff"]:checked').checked=false;
             document.getElementById('a2').checked=true;
             calculate();
             
@@ -121,35 +124,19 @@
         
         function toggleLanguage(selectedLanguage) {
             
-            
             currentLanguage = selectedLanguage;
             
             Object.keys(messages[currentLanguage]).forEach(key => {
                 const element = document.getElementById(key);
                 if (element) {
-                    
-                    const replacetext = messages[currentLanguage][key];
-                    
-                    //翻訳テキストに "<" が含まれるならHTMLごと変換
-                    if(replacetext.includes("<")){
-                        element.innerHTML = replacetext;
-                    }else{
-                    element.innerText = replacetext;
-                    }
+                    element.innerText = messages[currentLanguage][key];
                 }
             });
             
             Object.keys(buttons[currentLanguage]).forEach(key => {
                 const element = document.getElementById(key);
                 if (element) {
-                    
-                    const replacetext = buttons[currentLanguage][key];
-                    
-                    if(replacetext.includes("<")){
-                        element.innerHTML = replacetext;
-                    }else{
-                    element.innerText = replacetext;
-                    }
+                    element.innerText = buttons[currentLanguage][key];
                 }
             });
             
@@ -162,57 +149,10 @@
             });
             */
             calculate();
-            calculateTargetdamage();
             
             
         }
-
-// タブの切り替え
-function openTab(evt, tabName) {
-    const tabcontent = document.getElementsByClassName("tabcontent");
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    const tablinks = document.getElementsByClassName("tablinks");
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    document.getElementById(tabName).style.display = "flex";
-    evt.currentTarget.className += " active";
-}
-
-// 最初のタブをデフォルトで開く
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".tablinks").click();
-    calculate();
+        calculate();
         
-    if(window.navigator.language!="ja"){
-               toggleLanguage('en');
-    }
-    
-    
-    //表を生成
+        // 表を生成
         createTable(29,0,0,2);
-    
-
-    const linkscontent = document.getElementsByClassName("links");
-
-    linkscontent[0].style.display = "block";
-    
-    
-});
-
-
-window.onload = (event) => {
-    
-        };
-
-        
-
-
-
-
-
-

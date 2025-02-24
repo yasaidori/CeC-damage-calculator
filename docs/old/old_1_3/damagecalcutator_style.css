@@ -1,33 +1,11 @@
     :root {
             --darklight-text: #000000;
             --darklight-bg: #ffffff;
-            --darklight-tab: #f1f1f1;
-            --darklight-tab-button: #e7e7e7;
-            --darklight-tab-hover: #ddd;
-            --darklight-tab-active: #ccc;
-        
-            --darklight-inputbg: #ffffff;
-            --darklight-button: #eee;
-            --darklight-button-border: #d6d6d6;
-            --darklight-button-hover: #ddd;
-            --darklight-button-click: #f4f4f4;
-            
-        
 }
     @media (prefers-color-scheme: dark) {
         :root {
             --darklight-text: #f0f0f0;
             --darklight-bg: #0f0f0f;
-            --darklight-tab: #696969;
-            --darklight-tab-button: #616161;
-            --darklight-tab-hover: #555;
-            --darklight-tab-active: #444;
-            
-            --darklight-inputbg: #333;
-            --darklight-button: #666;
-            --darklight-button-border: #565656;
-            --darklight-button-hover: #777;
-            --darklight-button-click: #555;
         }
         
         a:link{
@@ -39,29 +17,8 @@
         }
         
 }
+        
 
-input {
-    color: var(--darklight-text);
-    background-color: var(--darklight-inputbg);
-    border: 2px solid var(--darklight-tab-active);
-}
-
-button{
-    color: var(--darklight-text);
-    background-color: var(--darklight-button);
-    border: 2px solid;
-    border-color: var(--darklight-button-border);
-    
-    
-}
-
-button:hover{
-    background-color: var(--darklight-button-hover);
-}
-
-button:active{
-    background-color: var(--darklight-button-click);
-}
 
 body {
         font-family: sans-serif;
@@ -77,7 +34,7 @@ label {
         }
         
         .title{
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             margin-left: 20px;
         }
@@ -87,7 +44,7 @@ label {
             font-style: normal;
             min-height: 32px;
             margin-left: 40px;
-            margin-bottom: 16px;
+            margin-bottom: 0px;
             margin-top: 16px;
         }
         
@@ -103,7 +60,7 @@ label {
             margin-left: 20px;
             
         }
-        .input-group_num , .input-group_eff {
+        .input-group {
            display: flex;
             
             align-items: center;
@@ -114,10 +71,10 @@ label {
         
         
         
-        .input-group_num label {
+        .input-group label {
             margin-right: 10px;
             margin-top: 0px;
-            width: 140px; /* ラベルの幅を固定 */
+            width: 135px; /* ラベルの幅を固定 */
             text-align: center;
             display: flex;
             flex-direction: row;
@@ -125,15 +82,6 @@ label {
            
         }
         
-        .input-group_eff label {
-            text-align: center;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-           
-        }
-        
-
 
 @media (max-width: 900px) {
            .preset-buttons {
@@ -148,7 +96,6 @@ label {
         .preset-buttons {
             display: flex;
             flex-direction: column;
-            
         }
         .preset-buttons button {
             margin-bottom: 5px;
@@ -158,7 +105,7 @@ label {
             
         }
         
-        .input-group_num img{
+        .input-group img{
             width: 16px;
             height: 16px;
             padding-top:2px;
@@ -270,22 +217,21 @@ label {
 
          .contents {
             display: flex;
-            flex-direction:row;
+            flex-direction: row;
 	
 	  > * {
 		    display: inline-block;
 		    flex: 0.33;
-		    padding: 4px 8px 0px 4px;
+		    padding: 0px;
     }
 }
 
-        @media (max-width: 960px) {
+        @media (max-width: 900px) {
             .contents {
                 padding: 0px 0px;
-                flex-direction: column;
-                
+                flex-direction: column
             }
-            .contents input {
+            .input-group input {
                 font-size: 16px;    
                 padding: 3px;
                 size:20;
@@ -316,57 +262,4 @@ label {
     font-size:90%;
 }
         
-
-
-.tab {
-    overflow: hidden;
-    border: 1px solid var(--darklight-tab-active);
-    background-color:var(--darklight-tab);
-    min-width: 480px;
-}
-
-.tab img{
-    width: 24px;
-    height: 24px;
-}
-
-.tab button {
-    background-color: var(--darklight-tab-button);
-    float:left;
-    color: var(--darklight-text);
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 0px;
-    width: 25%;
-    transition: 0.3s;
-    font-size: 18px;
-}
-
-.tab button:hover {
-    background-color: var(--darklight-tab-hover);
-}
-
-.tab button.active {
-    background-color: var(--darklight-tab-active);
-}
-
-.tabcontent {
-    
-    padding: 0px 0px;
-    border: 1px solid var(--darklight-tab-active);
-    border-top: none;
-    min-width: 480px;
-}
-
-.tabcontent notdefault {
-    display: none;
-}
-
-.links {
-    //display: none;
-
-}
-
-
         

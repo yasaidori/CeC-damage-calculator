@@ -6,8 +6,8 @@ function createTable(X, DamageStart, BoostStart , A) {
     A = parseFloat(A);
     
     
-    let damageRange = Array.from({length: 10}, (_, i) => i + DamageStart);
-    let boostRange = Array.from({length: 10}, (_, i) => i + BoostStart);
+    let damageRange = Array.from({length: 10}, (_, i) => i + DamageStart); // 0から9までの範囲
+    let boostRange = Array.from({length: 10}, (_, i) => i + BoostStart); // 15から24までの範囲
     
     if (DamageStart>0){
         damageRange.unshift(0);
@@ -146,4 +146,5 @@ function updateTable(newX, newDamageStart, newBoostStart , newA) {
     A = newA;
     createTable(X,DamageStart,BoostStart,A);
 }
+
 
