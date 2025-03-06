@@ -1,5 +1,4 @@
 
-        
         let currentLanguage = 'jp';
         window.onload = (event) => {
            
@@ -51,9 +50,9 @@
             let AX = A;
             let AY = A;
             
-            let result2 = ((D + X * AX) * (10 + Y * AY)/10);
+            let result2 = ((D + X * AX) * (1 + Y * 0.1 * AY));
             let result2_boosted = (D + X * AX);
-            let result2_multiplied = (10 + Y * AY)/10;
+            let result2_multiplied = (1 + Y * 0.1 * AY);
             let result = Math.max(Math.min(Math.ceil(result2),999) , 0);
             
             let resulthtml = result + (currentLanguage === 'jp' ? "" : "&nbsp;");

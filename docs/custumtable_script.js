@@ -61,7 +61,7 @@ function createTable(X, DamageStart, BoostStart , A) {
             td.id = `cell${row}${col}`;
             const damageValue = damageRange[col];
             const boostValue = value;
-            const result_cell = (X + boostValue * A) * (10 + damageValue * A) / 10; // 計算式に基づく値
+            const result_cell = (X + boostValue * A) * (1 + damageValue * 0.1 * A); // 計算式に基づく値
             const result_cell2 = Math.max(Math.min(Math.ceil(result_cell), 999), 0);
             let resultHTML = `<a title="${result_cell}">${result_cell2}</a>`;
             

@@ -60,7 +60,7 @@ function calculateTargetdamage() {
             let damagePlusFound = false;
             for (let damagePlus = 0; damagePlus <= 99; damagePlus++) {
                 
-                const calculatedDamage_raw = ((D + boost * A) * (10 + damagePlus * A) / 10)
+                const calculatedDamage_raw = ((D + boost * A) * (1 + damagePlus * 0.1 * A))
                 const calculatedDamage = Math.max(Math.min(Math.ceil(calculatedDamage_raw),999),0);
             
                 
@@ -177,7 +177,7 @@ function calculateTargetdamage() {
             let boostFound = false;
             for (let boost = 0; boost <= 99; boost++) {
                 
-                const calculatedDamage_raw = ((D + boost * A) * (10 + damagePlus * A) / 10)
+                const calculatedDamage_raw = ((D + boost * A) * (1 + damagePlus * 0.1 * A))
                 const calculatedDamage = Math.max(Math.min(Math.ceil(calculatedDamage_raw),999),0);
                 
                 if ((calculatedDamage >= tD) || (((damagePlus == 0) && (boost == 0)))|| (((damagePlus == 99) && (boost == 99)))) {
