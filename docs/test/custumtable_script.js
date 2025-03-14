@@ -26,11 +26,11 @@ function createTable(BaseDamage, BoostStart , DamageStart, A,Type,X,Y) {
     
     let size = 10;
     
+    let mediaQuery = window.matchMedia('(max-width: '+custumtable_resizewidth+'px)');
     
     
     
-    
-    if (window.innerWidth <= custumtable_resizewidth){
+    if (mediaQuery.matches){
         size = 7;
     }
     
@@ -219,9 +219,12 @@ let WindowWidth = window.innerWidth
 
 window.addEventListener('resize', () => {
   if (WindowWidth == window.innerWidth) return
+    
+    let mediaQuery = window.matchMedia('(max-width: '+custumtable_resizewidth+'px)');
+    
   
   
-    if ((window.innerWidth <= custumtable_resizewidth)&&(custumtable_resizeflag==false)){
+    if ((mediaQuery.matches)&&(custumtable_resizeflag==false)){
         custumtable_resizeflag=true;
         
         createTable(custumtable_backup_BaseDamage, custumtable_backup_BoostStart , custumtable_backup_DamageStart, custumtable_backup_A,custumtable_backup_Type,custumtable_backup_X,custumtable_backup_Y)
@@ -231,7 +234,7 @@ window.addEventListener('resize', () => {
         
   }
     
-    if ((window.innerWidth > custumtable_resizewidth)&&(custumtable_resizeflag)){
+    if ((mediaQuery.matches==false)&&(custumtable_resizeflag)){
         custumtable_resizeflag=false;
         
         createTable(custumtable_backup_BaseDamage, custumtable_backup_BoostStart , custumtable_backup_DamageStart, custumtable_backup_A,custumtable_backup_Type,custumtable_backup_X,custumtable_backup_Y)
@@ -240,6 +243,7 @@ window.addEventListener('resize', () => {
   
   WindowWidth = window.innerWidth
   
+    
 
 
 })
