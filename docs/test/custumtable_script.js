@@ -1,4 +1,4 @@
-let custumtable_resizewidth = 400;
+let custumtable_resizewidth = 960;
 let custumtable_resizeflag = false;
 
 let custumtable_backup_BaseDamage = 0;
