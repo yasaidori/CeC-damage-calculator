@@ -1,0 +1,433 @@
+    :root {
+            --darklight-text: #000000;
+            --darklight-bg: #ffffff;
+            --darklight-tab: #f1f1f1;
+            --darklight-tab-button: #e7e7e7;
+            --darklight-tab-hover: #ddd;
+            --darklight-tab-active: #ccc;
+        
+            --darklight-inputbg: #ffffff;
+            --darklight-button: #eee;
+            --darklight-button-border: #d6d6d6;
+            --darklight-button-hover: #ddd;
+            --darklight-button-click: #f4f4f4;
+            
+        
+}
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --darklight-text: #f0f0f0;
+            --darklight-bg: #0f0f0f;
+            --darklight-tab: #696969;
+            --darklight-tab-button: #616161;
+            --darklight-tab-hover: #555;
+            --darklight-tab-active: #444;
+            
+            --darklight-inputbg: #333;
+            --darklight-button: #666;
+            --darklight-button-border: #565656;
+            --darklight-button-hover: #777;
+            --darklight-button-click: #555;
+        }
+        
+        a:link{
+            color:#8dbbff;
+        }
+        
+        a:visited{
+            color:#cd9cfd;
+        }
+        
+}
+
+input,select {
+    color: var(--darklight-text);
+    background-color: var(--darklight-inputbg);
+    border: 2px solid var(--darklight-tab-active);
+}
+
+button{
+    color: var(--darklight-text);
+    background-color: var(--darklight-button);
+    border: 2px solid;
+    border-color: var(--darklight-button-border);
+    
+    
+}
+
+button:hover{
+    background-color: var(--darklight-button-hover);
+}
+
+button:active{
+    background-color: var(--darklight-button-click);
+}
+
+body {
+        font-family: sans-serif;
+        color: var(--darklight-text);
+        background-color: var(--darklight-bg);
+    }
+
+.damagecalculator_contents{
+    
+
+    
+}
+
+
+label {
+            display: block;
+            margin-top: 10px;
+            margin-left: 0px;
+        }
+        
+        .title{
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        .languagechange button{
+            font-size: 14px;
+            font-style: normal;
+            min-height: 32px;
+            margin-left: 40px;
+            margin-bottom: 16px;
+            margin-top: 16px;
+        }
+        
+        .input-container {
+            display: flex;
+            
+            align-items: flex-start; /* テキストボックスの縦を揃える */
+            margin-left: 0px;
+        }
+        .input-group-container {
+            display: flex;
+            flex-direction: column;
+            margin-right: 5px;
+            margin-left: 5px;
+            width: 240px;
+            
+        }
+        .input-group_num , .input-group_eff {
+           display: flex;
+            
+            align-items: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 0px;
+            
+        }
+        
+        
+        
+        .input-group_num label {
+            margin-right: 5px;
+            margin-left: 0px;
+            margin-top: 0px;
+            min-width: 120px; /* ラベルの幅を固定 */
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+           
+        }
+        
+        .input-group_eff label {
+            text-align: center;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+           
+        }
+        
+        .default_hidden {
+            display: none;
+        }
+
+
+@media (max-width: 900px) {
+           .preset-buttons {
+            display: flex;
+            flex-direction: column;
+            min-width: 0px;
+        }
+            
+        }
+        
+        
+
+        .preset-buttons {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            
+        }
+        .preset-buttons button {
+            display: flex;
+            margin-top: 5px;
+            text-align: left;
+            min-height: 26px;
+            width: 100%;
+            
+            
+        }
+        
+        .preset-buttons select {
+            display: flex;
+            margin-top: 5px;
+            text-align: left;
+            min-height: 26px;
+            width: 100%;
+            
+            
+        }
+
+        .input-group_num img{
+            width: 16px;
+            height: 16px;
+            padding-top:2px;
+        }
+        
+        
+        .damagetableimage { 
+            max-width: 840px; 
+            margin-left: 20px;
+        }
+
+        
+        .damagetableimage img { 
+            width: 100%;
+        }
+
+        .result{
+            display: flex;
+            flex: auto;
+            flex-grow: 1;
+            max-width: 380px;
+            min-width: 320px;
+            min-height: 180px;
+            flex-direction: column;
+            margin-left: 5px;
+        }
+
+        .result_background{
+            background-image: linear-gradient(60deg, rgba(50, 0, 0, 1) ,rgba(80,0,0,1),rgba(50, 0, 0, 1));
+            color: #ffffff;
+            
+}
+        
+        .resultvalue{
+            display: flex;
+            flex: 0;
+            flex-direction: column;
+            padding: 8px 0px 0px 16px;
+            
+            min-width: 180px;
+            min-height: 24px;
+            font-size: 16px;
+            font-weight: bold;
+            
+            
+            
+            color: #ffffff;
+        }
+
+        .resultvalue img{
+            width: 16px;
+            height: 16px;
+        }
+        
+        .resultadditonal{
+            display: flex;
+            flex: auto;
+            flex-grow: 1;
+            flex-direction: column;
+            padding: 0px 0px 0px 16px;
+            
+            min-width: 180px;
+            min-height: 0px;
+            
+            font-size: 16px;
+            font-weight: bold;
+            
+            color: #ffffff;
+            
+        }
+        
+        .multipleeffect{
+            display: flex;
+            flex: 0;
+            flex-direction: column;
+            padding: 0px 0px 0px 16px;
+            
+            min-width: 180px;
+            min-height: 0px;
+            
+            font-size: 16px;
+            font-weight: bold;
+            
+            color: #ffffff;
+        }
+        
+        .result_big{
+            font-size: 24px;
+            padding-bottom: 4px;
+        }
+
+
+        .formula {
+            display: flex;
+            flex:auto;
+            flex-direction: column;
+            margin-left: 36px;
+            white-space: nowrap
+           
+        }
+        .formula img{
+            width: 16px;
+            height: 16px;
+            padding-top: 2px;
+        }
+        
+        .formula_calcuation{
+            
+        }
+        
+        .glitchyourwaytovictory{
+            padding: 8px 32px 16px 0px;
+            flex-direction: column;
+            margin-right: 0;
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: 0;
+            background: linear-gradient(150deg, rgba(255, 176, 177, 1), rgba(252, 199, 174, 1) 10%, rgba(246, 246, 175, 1) 30%, rgba(179, 255, 173, 1) 50%, rgba(178, 249, 235, 1) 70%, rgba(194, 160, 255, 1) 90%, rgba(177, 134, 208, 1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+            font-weight: bold;
+            display: inline-block;
+            
+            
+            
+            letter-spacing : 0px;                
+            
+            
+            opacity: 1;
+            
+}
+
+         .contents {
+            display: flex;
+            flex-direction:row;
+	
+	  > * {
+		    display: inline-block;
+		    //flex: 1;
+		    padding: 4px 8px 0px 4px;
+    }
+}
+
+.contents input[type="number"] {
+                width: 80px;
+                }
+
+
+        @media (max-width: 960px) {
+            .contents {
+                padding: 0px 0px;
+                flex-direction: column;
+                
+            }
+            .contents input[type="number"] {
+                font-size: 18px;    
+                padding: 3px;
+                width: 70px;
+                }
+            
+            
+            
+    }
+
+
+
+        @media (max-width: 600px) {
+           .preset-buttons button {
+            //font-size: 14px;
+        }
+    
+}
+
+
+
+        ul{
+             padding-left:0;
+}
+
+        li{
+            list-style:none;
+}
+          
+.version{
+    font-size:90%;
+}
+        
+
+
+.tab {
+    overflow: hidden;
+    border: 1px solid var(--darklight-tab-active);
+    background-color:var(--darklight-tab);
+    min-width: 360px;
+}
+
+.tab img{
+    width: 24px;
+    height: 24px;
+}
+
+.tab button {
+    background-color: var(--darklight-tab-button);
+    float:left;
+    color: var(--darklight-text);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 0px;
+    width: 25%;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+.tab button:hover {
+    background-color: var(--darklight-tab-hover);
+}
+
+.tab button.active {
+    background-color: var(--darklight-tab-active);
+}
+
+.tabcontent {
+    
+    padding: 0px 0px;
+    border: 1px solid var(--darklight-tab-active);
+    border-top: none;
+    min-width: 360px;
+    
+    
+}
+
+.tabcontent notdefault {
+    display: none;
+}
+
+.links {
+    //display: none;
+
+}
+
+
+        
