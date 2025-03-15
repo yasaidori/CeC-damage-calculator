@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Card-en-Ciel calculator🌈📱</title>
+    <link rel="stylesheet" href="damagecalcutator_style.css">
+    <link rel="stylesheet" href="custumtable_style.css">
+    <link rel="stylesheet" href="targetdamage_style.css">
+    <meta name="viewport" content="width=device-width">
+
+</head>
+<body>
+    
+    
+    <div class="title" id="title">カルアンダメージ計算機</div>
+    <div class="languagechange">
+        <button onclick="toggleLanguage('jp');" flex: auto  id="language">日本語</button>
+        <button onclick="toggleLanguage('en');" flex: auto  id="language">English</button>
+        </div>
+    
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Calculator')"  id="mode_calculate"><img src="buffs.png" >計算機</button>
+        <button class="tablinks" onclick="openTab(event, 'TargetDamage')" id="mode_target"><img src="attack.png" >目標ダメージ</button>
+    </div>
+    
+    
+    <div class="contents tabcontent" id="Calculator">
+    <li>
+    
+    <div class="input-container">
+        <div class="input-group-container">
+            <div class="input-group_num">
+                <label for="damage">
+                    <img src="damage+.png" style="opacity:0;"><div id="basedamage">元のダメージ:</div></label>
+                <input type="number" id="damage" style="width:80px;" value="" oninput="calculate()">
+            </div>
+            <div class="input-group_num">
+                <label for="input_boost">
+                    <img src="boost.png" > <div id="boost">ブースト:</div></label>
+                <input type="number" id="input_boost" style="width:80px;" value="" oninput="calculate()">
+            </div>
+            <div class="input-group_num">
+                <label for="damagePlus">
+                    <img src="damage+.png"> <div id="damageplus">ダメージ+:</div></label>
+                <input type="number" id="damagePlus" style="width:80px;" value="" oninput="calculate()">
+            </div>
+            
+            <label><div id="ratio">ダメージ増加の効果:</div></label>
+           <div class="input-group_eff">
+               <input type="radio" id="a1" name="coeff" value="1" onchange="calculate()"><label for="a1"><div id="single">1倍</div></label>
+            
+               <input type="radio" id="a2" name="coeff" value="2" onchange="calculate()" checked="checked"><label for="a2"><div id="double">2倍</div></label>
+            
+               <input type="radio" id="a4" name="coeff" value="4" onchange="calculate()"><label for="a4"><div id="quadruple">4倍</div></label>
+            </div>
+            <div class="input-group_eff"><p></p>
+                <input type="radio" id="acustom" name="coeff" value="1" onchange="calculate()"><label for="acustom"><div id="custom">カスタム:</div>
+                <input type="number" id="acustominput" style="width:80px;" value="" oninput="calculate()"></label>
+            </div>
+            
+        </div>
+        
+        
+        <div class="preset-buttons">
+            <button onclick="setPreset(29)" id="Blade_of_Retribution">29 (復讐の刃)</button>
+    <button onclick="setPreset(54)" id="Blade_of_Retribution_SP">54 (復讐の刃 必殺)</button>
+    <button onclick="setPreset(18)" id="Demon_Hunter_the_Eldest">18 (悪魔ハンター姉)</button>
+    <button onclick="setPreset(38)" id="Demon_Hunter_the_Eldest_SP">38 (悪魔ハンター姉 必殺)</button>
+    <br>
+            <div flex: min-content;>
+    <button onclick="clearInput()" flex: auto id="clear">クリア</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="result">
+
+        <div class="resultvalue"><span id="result">&nbsp;</span><div id="cardtext_damage">ダメージ。</div></div><div class="multipleeffect"><span id="multiple">ダメージ増加の効果が&nbsp;倍。</span></div>
+        <div class="glitchyourwaytovictory"><span id="glitchyourwaytovictory"> </span></div>
+    </div>
+    
+    
+    
+    <div class="formula">
+    
+    <div id="formula">計算式:</div><div class="formula_calcuation">(<span id="result_D">&nbsp;</span>&nbsp;+&nbsp;<img src="boost.png"><span id="result_X">&nbsp;</span>&nbsp;*&nbsp;<span id="result_AX">&nbsp;</span>)&nbsp;*&nbsp;(1&nbsp;+&nbsp;<img src="damage+.png"><span id="result_Y">&nbsp;&nbsp;&nbsp;</span>*&nbsp;0.1&nbsp;*&nbsp;<span id="result_AY">&nbsp;</span>)&nbsp;=&nbsp;</div>
+        <div class="formula_calcuation"><span id = "result2_boosted">&nbsp;</span>&nbsp;*&nbsp;<span id = result2_multiplied>&nbsp;</span>&nbsp;=&nbsp;<span id = "result2">&nbsp;</span></div>
+    
+
+    </div>
+        </li>
+        <li>
+        
+    <table class="customtable" id="customTable">
+        <thead>
+            <tr id="header-row">
+                <th id="top-left-cell" style="display: none"></th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+        </li>
+        
+    </div>
+    
+    <div id="TargetDamage" class="contents tabcontent notdefault targetdamage" style="display: none">
+        <div class="targetdamage_input-container">    
+        
+            
+        <div class="input-group-container">
+            <div class="input-group_num">
+                <label for="targetdamage_input_basedamage">
+                    <img src="damage+.png" style="opacity:0;"><div id="targetdamage_basedamage">元のダメージ:</div></label>
+                <input type="number" id="targetdamage_input_basedamage" style="width:80px;" value="" oninput="calculateTargetdamage()">
+            </div>
+            
+            <label><div id="targetdamage_ratio">ダメージ増加の効果:</div></label>
+           <div class="input-group_eff">
+               <input type="radio" id="targetdamage_a1" name="targetdamage_coeff" value="1" onchange="calculateTargetdamage()"><label for="targetdamage_a1"><div id="targetdamage_single">1倍</div></label>
+            
+               <input type="radio" id="targetdamage_a2" name="targetdamage_coeff" value="2" onchange="calculateTargetdamage()" checked="checked"><label for="targetdamage_a2"><div id="targetdamage_double">2倍</div></label>
+            
+               <input type="radio" id="targetdamage_a4" name="targetdamage_coeff" value="4" onchange="calculateTargetdamage()"><label for="targetdamage_a4"><div id="targetdamage_quadruple">4倍</div></label>
+            </div>
+            <div class="input-group_eff"><p></p>
+                <input type="radio" id="targetdamage_targetdamage_acustom" name="targetdamage_coeff" value="1" onchange="calculateTargetdamage()"><label for="targetdamage_targetdamage_acustom"><div id="targetdamage_custom">カスタム:</div>
+                <input type="number" id="targetdamage_acustominput" style="width:80px;" value="" oninput="calculateTargetdamage()"></label>
+                
+                </div>
+                
+            <p>
+            </p>
+            
+            <div class="input-group_num">
+                <label for="targetdamage_input_targetdamage">
+                    <img src="damage+.png" style="opacity:0;"> <div id="targetdamage_targetdamage">目標ダメージ:</div></label>
+                <input type="number" id="targetdamage_input_targetdamage" style="width:80px;" value="" oninput="calculateTargetdamage()">
+            </div>
+            
+            
+            
+            </div>
+            
+            <div class="preset-buttons">
+            <button onclick="targetdamage_setPreset(29)" id="targetdamage_Blade_of_Retribution">29 (復讐の刃)</button>
+            <button onclick="targetdamage_setPreset(54)" id="targetdamage_Blade_of_Retribution_SP">54 (復讐の刃 必殺)</button>
+            <button onclick="targetdamage_setPreset(18)" id="targetdamage_Demon_Hunter_the_Eldest">18 (悪魔ハンター姉)</button>
+            <button onclick="targetdamage_setPreset(38)" id="targetdamage_Demon_Hunter_the_Eldest_SP">38 (悪魔ハンター姉 必殺)</button>
+            <br>
+            <div flex: min-content;>
+    <button onclick="targetdamage_clearInput()" flex: auto id="targetdamage_clear">クリア</button>
+            </div>
+        </div>
+            
+            
+            </div>
+        
+            
+            
+            
+            
+        <div id="targetdamage_button_and_table">
+            <div id="targetdamage_swapbutton">
+            <button type="button" onclick="changeTargetdamage()" id="targetdamage_swap" style=""><img src="boost.png" style="width: 16px; height:16px;">ブーストと<img src="damage+.png" style="width: 16px; height:16px;">ダメージ+を入替</button></div>
+        <p id="resultTable">
+            <!-- 計算結果のテーブルがここに表示されます -->
+        </p>
+      
+        </div>    
+            
+            
+    </div>
+    
+    
+    <div class="links">
+    
+    <a href="https://store.steampowered.com/app/2730540/_/">Card-en-Ciel on Steam</a>
+    <br>
+    <a href="https://github.com/yasaidori/CeC-damage-calculator">CeC-damage-calculator on GitHub</a>
+        <br><br>
+    <a href="../versionselect.html">other versions</a>
+    <div class="version">v1.4.1</div>
+    </div>
+    
+    
+    <script src="localization.js" charset="utf-8"></script> 
+        <script src="custumtable_script.js" charset="utf-8"></script>
+    <script src="damagecalculator_script.js" charset="utf-8"></script>
+       <script src="targetdamage_script.js" charset="utf-8"></script>
+
+    
+    
+</body>
+</html>
