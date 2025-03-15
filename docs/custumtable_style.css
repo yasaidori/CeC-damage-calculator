@@ -69,7 +69,7 @@
     background-color: var(--darklight-highlight); /* ハイライト色 */
 }
 
-@media (max-width: 530px) {
+@media (max-width: 560px) {
            .icon {
             width: 12px;
             height: 12px;
