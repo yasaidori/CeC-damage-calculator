@@ -95,6 +95,9 @@
     
 }
 
+
+
+
 .targetdamage_basetext{
             display: flex;
             flex: 0;
@@ -110,6 +113,11 @@
             
             color: #ffffff;
         }
+
+.targetdamage_basetext span:not(.default_hidden){
+            display: inline-block;
+        }   
+
 
 
 .targetdamage_swapbutton_style{

@@ -17,6 +17,8 @@ const localizations ={
                 The_Undying:                "輪廻天翔",
                 The_Undying_SP:             "輪廻天翔 必殺",
                 
+                Lustrous_Heroic_King:            "光の英雄王",
+                Lustrous_Heroic_King_SP:         "光の英雄王 必殺",
                 Radiant_Maestro:            "陽光の老騎士 アナザー",
                 Radiant_Maestro_SP:         "陽光の老騎士 アナザー 必殺",
                 Absolute_Power:             "絶対的なチカラ",
@@ -47,6 +49,8 @@ const localizations ={
                 The_Undying:                "The Undying",
                 The_Undying_SP:             "The Undying SP",
                 
+                Lustrous_Heroic_King:       "Lustrous Heroic King",
+                Lustrous_Heroic_King_SP:    "Lustrous Heroic King SP",
                 Radiant_Maestro:            "Radiant Maestro (Parallel)",
                 Radiant_Maestro_SP:         "Radiant Maestro (Parallel) SP",
                 Absolute_Power:             "Absolute Power",
@@ -69,6 +73,7 @@ const localizations ={
                 cardtype_setup:             "セットアップ",
                 cardtype_debug:             "デバッグ",
                 cardtype_XY:                "Xの数だけ、ダメージ+Y",
+                cardtype_LustrousHeroicKing:"光の英雄王",
                 cardtype_RadiantMaestro:    "陽光の老騎士 アナザー",
                 cardtype_AbsolutePower:     "絶対的なチカラ"
                 },
@@ -79,6 +84,7 @@ const localizations ={
                 cardtype_setup:             "Setup",
                 cardtype_debug:             "Debug",
                 cardtype_XY:                "For each X, damage +Y",
+                cardtype_LustrousHeroicKing:"Lustrous Heroic King",
                 cardtype_RadiantMaestro:    "Radiant Maestro (Parallel)",
                 cardtype_AbsolutePower:     "Absolute Power"
                 }
@@ -149,7 +155,8 @@ const messages = {
                 cardtext_debug:         '<font color="yellow">デバッグ</font>{1}：ダメージ+{0}。',
                 cardtext_addtotal:      '<br>(+{0}ダメージ)',
         
-                cardtext_eachXplusY:    "Xの数だけ、ダメージ+{0}。(+{1}ダメージ)",
+                cardtext_eachXplusY:    "Xの数だけ、ダメージ+{0}。（+{1}ダメージ）",
+                cardtext_each5cardsplusY:    '<span><font color="yellow">セットアップ</font>{3}：</span><span>このターン、</span><span>手札が5枚のときに</span><span>使用したカードの数だけ、</span><span>ダメージ+{0}。</span><br>（+{1}ダメージ）',
                 cardtext_eachDamagePlusplusY:    '<font color="yellow">セットアップ</font>{3}：<img src="damage+.png" style="width: 16px; height:16px;">の数だけ、ダメージ+{0}。<br>（+{1}ダメージ）',
                 cardtext_eachBoostplusY:'<img src="boost.png" style="width: 16px; height:16px;">をすべて失い、{0}ダメージ。<br>失った数だけ、ダメージ+{1}。<br>（+{2}ダメージ）',
                 cardtext_2x:    "2",
@@ -161,6 +168,7 @@ const messages = {
                 targetdamage_setup:                          "セットアップ:",
                 targetdamage_debug:                          "デバッグ:",
                 targetdamage_additionaldamage:               "追加ダメージ:",
+                
         
                 targetdamage_targetdamage:     "目標ダメージ:",
                 targetdamage_ratio:          "ダメージ増加の効果:",
@@ -171,7 +179,12 @@ const messages = {
                 targetdamage_breakdown:         "ブレイクダウン",
                 targetdamage_table_boost:   "ブースト",
                 targetdamage_table_damageplus:    "ダメージ+",
-                targetdamage_table_damage:    "ダメージ"
+                targetdamage_table_damage:    "ダメージ",
+        
+                targetdamage_cardtext_eachXplusY:    "Xの数だけ、ダメージ+{0}。",
+                targetdamage_cardtext_eachDamagePlusplusY:    '<font color="yellow">セットアップ</font>{3}：<img src="damage+.png" style="width: 16px; height:16px;">の数だけ、ダメージ+{0}。',
+                targetdamage_cardtext_eachBoostplusY:'<img src="boost.png" style="width: 16px; height:16px;">をすべて失い、{0}ダメージ。<br>失った数だけ、ダメージ+{1}。'
+        
             },
     en: {
                 title:          "Card-en-Ciel calculator",
@@ -197,6 +210,7 @@ const messages = {
                 cardtext_debug:         '<font color="yellow">Debug</font>{1}: +{0} damage.',
                 cardtext_addtotal:      '<br>(+{0} damage)',
                 cardtext_eachXplusY:    "+{0} damage for each X.(+{1} damage)",
+                cardtext_each5cardsplusY:    '<font color="yellow">Setup</font>{3}: +{0} damage for each per card that was used while at 5 cards in hand this turn.<br>(+{1} damage)',
                 cardtext_eachDamagePlusplusY:    '<font color="yellow">Setup</font>{3}: +{0} damage for each <img src="damage+.png" style="width: 16px; height:16px;">.<br>(+{1} damage)',
                 cardtext_eachBoostplusY:'Lose all <img src="boost.png" style="width: 16px; height:16px;"> and deal {0} damage.<br>+{1} damage per <img src="boost.png" style="width: 16px; height:16px;"> lost.<br>(+{2} damage)',
         
@@ -219,7 +233,11 @@ const messages = {
         
                 targetdamage_table_boost:   "Boost",
                 targetdamage_table_damageplus:    "Damage+",
-                targetdamage_table_damage:    "Damage"
+                targetdamage_table_damage:    "Damage",
+        
+                targetdamage_cardtext_eachXplusY:    "+{0} damage for each X.",
+                targetdamage_cardtext_eachDamagePlusplusY:    '<font color="yellow">Setup</font>{3}: +{0} damage for each <img src="damage+.png" style="width: 16px; height:16px;">.',
+                targetdamage_cardtext_eachBoostplusY:'Lose all <img src="boost.png" style="width: 16px; height:16px;"> and deal {0} damage.<br>+{1} damage per <img src="boost.png" style="width: 16px; height:16px;"> lost.'
             }
 };
 

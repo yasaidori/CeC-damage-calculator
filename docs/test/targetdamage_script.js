@@ -8,6 +8,12 @@ function calculateTargetdamage() {
     let D = parseFloat(document.getElementById('targetdamage_input_basedamage').value);
     let tD = parseFloat(document.getElementById('targetdamage_input_targetdamage').value);
     let A = 1;
+    
+    let Setup = parseFloat(document.getElementById('targetdamage_input_Setup').value);
+    
+    if (isNaN(Setup)) {
+                Setup = 0;
+            }
             
     let Breakdown  = document.getElementById('targetdamage_breakdownbox').checked;
     
@@ -25,8 +31,16 @@ function calculateTargetdamage() {
     let X = parseFloat(document.getElementById('targetdamage_input_X').value);
     let Y = parseFloat(document.getElementById('targetdamage_input_Y').value);
     
+    
+    
+    
+    if (Type=="cardtype_LustrousHeroicKing"){
+        X = Setup * X;
+        Y = parseFloat(document.getElementById('targetdamage_input_ADD').value);
+    }
+    
     if ((Type=="cardtype_RadiantMaestro")||(Type=="cardtype_setup")||(Type=="cardtype_debug")){
-                X = parseFloat(document.getElementById('targetdamage_input_Setup').value);
+                X = Setup;
                 Y = parseFloat(document.getElementById('targetdamage_input_ADD').value);
             }
             
@@ -35,6 +49,8 @@ function calculateTargetdamage() {
                 Y = parseFloat(document.getElementById('targetdamage_input_ADD').value);
             }
             
+    
+    
     
     
     //入力が不正なら0として扱う
@@ -94,7 +110,7 @@ function calculateTargetdamage() {
     
     
     let basedamage_Y_fixed = Math.max(Math.min(Math.ceil(Y),999) , 0);
-    let basedamage_additonal_fixed = Math.min(Math.max(Math.ceil(X * basedamage_Y_fixed), 0),9999);
+    let basedamage_additonal_fixed = Math.max(Math.ceil(X * basedamage_Y_fixed), 0);
     
     
     
@@ -126,6 +142,17 @@ function calculateTargetdamage() {
                     additionalHTML = messages[currentLanguage].cardtext_eachXplusY.replace("{0}",basedamage_Y_fixed).replace("{1}",basedamage_additonal_fixed)
                 }
     
+    if (Type=="cardtype_LustrousHeroicKing"){
+                    
+                    let setupHTML = "";
+                    
+                    if (Setup!=1){
+                        setupHTML = "×"+Setup;
+                    }
+                    additionalHTML = messages[currentLanguage].cardtext_each5cardsplusY.replace("{0}", basedamage_Y_fixed).replace("{3}",setupHTML).replace("{1}",basedamage_additonal_fixed);
+                }
+    
+    
     if (Type=="cardtype_RadiantMaestro"){
                     
                     let setupHTML = "";
@@ -133,11 +160,11 @@ function calculateTargetdamage() {
                     if (X!=1){
                         setupHTML = "×"+X;
                     }
-                    additionalHTML = messages[currentLanguage].cardtext_eachDamagePlusplusY.replace("{0}", basedamage_Y_fixed).replace("{1}", basedamage_additonal_fixed).replace("{3}",setupHTML);
+                    additionalHTML = messages[currentLanguage].targetdamage_cardtext_eachDamagePlusplusY.replace("{0}", basedamage_Y_fixed).replace("{3}",setupHTML);
                 }
     
     if (Type=="cardtype_AbsolutePower"){
-                    additionalHTML = messages[currentLanguage].cardtext_eachBoostplusY.replace("{1}", basedamage_Y_fixed).replace("{2}", basedamage_additonal_fixed).replace("{0}", Math.ceil(Math.min(Math.max(D,0),999)));
+                    additionalHTML = messages[currentLanguage].targetdamage_cardtext_eachBoostplusY.replace("{1}", basedamage_Y_fixed).replace("{0}", Math.ceil(Math.min(Math.max(D,0),999)));
                 }
     
     
@@ -531,6 +558,27 @@ function targetdamage_changeCardtype(type){
         elementRevealIds = ["targetdamage_inputdivX", "targetdamage_inputdivY"];
 
     }
+    
+    if (type == "cardtype_LustrousHeroicKing"){
+        
+        elementHideIds = ["targetdamage_inputdivY"];
+        elementRevealIds = ["targetdamage_inputdivX","targetdamage_inputdivSetup","targetdamage_inputdivADD"];
+
+        
+        
+        const lavelElementSetup = document.getElementById("targetdamage_debug")
+        
+        if(lavelElementSetup!=undefined){
+            lavelElementSetup.id ="targetdamage_setup";
+            lavelElementSetup.innerText = messages[currentLanguage].setup;
+        }
+        
+        document.getElementById('targetdamage_input_basedamage').value=8;
+        document.getElementById('targetdamage_input_Setup').value=1;
+        document.getElementById('targetdamage_input_ADD').value=8;
+        
+    }
+    
     if (type == "cardtype_RadiantMaestro"){
         
         elementHideIds = ["targetdamage_inputdivX","targetdamage_inputdivY"];

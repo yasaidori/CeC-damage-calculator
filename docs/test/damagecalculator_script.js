@@ -54,6 +54,12 @@
             let X = parseFloat(document.getElementById('input_X').value);
             let Y = parseFloat(document.getElementById('input_Y').value);
             
+            let Setup = parseFloat(document.getElementById('input_Setup').value);
+            
+            if (isNaN(Setup)) {
+                Setup = 0;
+            }
+            
             let acustomflag  = document.querySelector('input[name="coeff"]:checked').id ==="acustom" ? true : false;
             
             if(acustomflag){
@@ -64,8 +70,14 @@
             
             let Type = document.getElementById('cardtypeselect').value;
             
+            
+            if (Type=="cardtype_LustrousHeroicKing"){
+                X = X * Setup;
+                Y = parseFloat(document.getElementById('input_ADD').value);
+            }
+            
             if ((Type=="cardtype_RadiantMaestro")||(Type=="cardtype_setup")||(Type=="cardtype_debug")){
-                X = parseFloat(document.getElementById('input_Setup').value);
+                X = Setup;
                 Y = parseFloat(document.getElementById('input_ADD').value);
             }
             
@@ -152,7 +164,7 @@
             }
             
             
-             if (["cardtype_setup", "cardtype_debug","cardtype_XY","cardtype_RadiantMaestro", "cardtype_AbsolutePower"].includes(Type)) {
+             if (["cardtype_setup", "cardtype_debug","cardtype_XY","cardtype_LustrousHeroicKing","cardtype_RadiantMaestro", "cardtype_AbsolutePower"].includes(Type)) {
 
 
                 
@@ -170,7 +182,7 @@
                 
                 
                 let multipliedY_fixed_HTML = results.result_multipliedY_fixed;
-                let additonal_fixed_HTML = Math.min(results.result_additonal_fixed,9999);
+                let additonal_fixed_HTML = results.result_additonal_fixed;
                 
                 if (results.result_multipliedY_fixed>Math.max(Math.ceil(Y),0)){
                     multipliedY_fixed_HTML = "<span style=\"color:#00ff00;\">"+multipliedY_fixed_HTML+"</span>";
@@ -213,7 +225,16 @@
                 }
                 
                  
-                 
+                if (Type=="cardtype_LustrousHeroicKing"){
+                    
+                    let setupHTML = "";
+                    
+                    if (Setup!=1){
+                        setupHTML = "×"+Setup;
+                    }
+                    XYTEXT.innerHTML = messages[currentLanguage].cardtext_each5cardsplusY.replace("{0}", multipliedY_fixed_HTML).replace("{1}", additonal_fixed_HTML).replace("{3}",setupHTML);
+                }
+                
                  
                 if (Type=="cardtype_RadiantMaestro"){
                     
@@ -258,7 +279,12 @@
             
             
 
-            
+            if (Type=="cardtype_LustrousHeroicKing"){
+                
+                if (Setup!=1){
+                resultformulaaddHTML[8] = Setup+'&nbsp;*&nbsp;';
+                }
+            }
             
             if (Type=="cardtype_RadiantMaestro"){
                 resulthtmlX = Damageplus;
@@ -269,7 +295,7 @@
             
             
             
-            if (["cardtype_setup", "cardtype_debug","cardtype_XY","cardtype_RadiantMaestro", "cardtype_AbsolutePower"].includes(Type)) {
+            if (["cardtype_setup", "cardtype_debug","cardtype_XY","cardtype_LustrousHeroicKing","cardtype_RadiantMaestro", "cardtype_AbsolutePower"].includes(Type)) {
                 resultformulaaddHTML[0] = '[';
                 resultformulaaddHTML[1] = ']';
                 resultformulaaddHTML[2] = '<span style="text-align:center;">+&nbsp'+resultformulaaddHTML[8]+resulthtmlX+'&nbsp;*&nbsp;['+Y+'&nbsp;*&nbsp(1&nbsp;+&nbsp;<img src="damage+.png">'+Damageplus+'&nbsp;*&nbsp;0.1&nbsp;*&nbsp;'+Multiplier+')]</span>';
@@ -290,6 +316,9 @@
                 
             }
             
+            if (Type=="cardtype_AbsolutePower"){
+                Boost = 0;
+            }
             
             //計算式の更新を行う
             let resultformulaHTML = "<span>&nbsp;&nbsp;"+resultformulaaddHTML[0]+"("+Basedamage+'&nbsp;+&nbsp;<img src="boost.png">'+Boost+'&nbsp;*&nbsp;'+Multiplier+')&nbsp;*&nbsp;(1&nbsp;+&nbsp;<img src="damage+.png">'+Damageplus+'&nbsp;*&nbsp;0.1&nbsp;*&nbsp;'+Multiplier+')'+resultformulaaddHTML[1]+'</span>'+resultformulaaddHTML[2];
@@ -521,6 +550,18 @@ function calculation(Basedamage,Boost,Damageplus,Multiplier,Type,X,Y,Breakdown) 
                  
             }
     
+            if (Type=="cardtype_LustrousHeroicKing"){
+                result_multipliedY = Y * (1 + 0.1* Damageplus * Multiplier);
+                result_multipliedY_fixed = Math.max(Math.min(Math.ceil(result_multipliedY),999) , 0);
+                result_additonal = X * result_multipliedY_fixed;
+                result_additonal_fixed = Math.max(Math.ceil(result_additonal), 0);
+                 
+                result_total_added = Math.min(result_total+result_additonal_fixed,9999);
+                
+
+                     result = result_total_added;
+                 
+            }
     
             if (Type=="cardtype_RadiantMaestro"){
                 result_multipliedY = Y * (1 + 0.1* Damageplus * Multiplier);
@@ -536,6 +577,14 @@ function calculation(Basedamage,Boost,Damageplus,Multiplier,Type,X,Y,Breakdown) 
             }
             
             if (Type=="cardtype_AbsolutePower"){
+                
+                //ブーストを失ってから、ダメージ計算
+                
+                result_boosted = (Basedamage);
+                result = (result_boosted) * (result_multiplied);
+                result_total = Math.max(Math.min(Math.ceil(result),999) , 0);
+                result_total_notadded = result_total;
+                
                 result_multipliedY = Y * (1 + 0.1* Damageplus * Multiplier);
                 result_multipliedY_fixed = Math.max(Math.min(Math.ceil(result_multipliedY),999) , 0);
                 result_additonal = Boost * result_multipliedY_fixed;
@@ -555,7 +604,7 @@ function calculation(Basedamage,Boost,Damageplus,Multiplier,Type,X,Y,Breakdown) 
                 result_total = Math.min(result_total * 2 ,9999);
                 result = result_total
                 result_total_added = Math.min(result_total_added * 2 ,9999);
-                result_additonal_fixed = Math.min(result_additonal_fixed * 2 ,9999);
+                result_additonal_fixed = result_additonal_fixed * 2;
             }
     
     
@@ -611,6 +660,26 @@ function changeCardtype(type){
 
         const resultElementDamagevalue = document.getElementById("normalresult");
         resultElementDamagevalue.classList.remove("result_big");
+        
+    }
+    if (type == "cardtype_LustrousHeroicKing"){
+        
+        elementHideIds = ["inputdivY"];
+        elementRevealIds = ["inputdivX","inputdivSetup", "resultadditonal", "resulttotalvalue","inputdivADD","cardtext_damage"];
+
+        const resultElementDamagevalue = document.getElementById("normalresult");
+        resultElementDamagevalue.classList.remove("result_big");
+        
+        const lavelElementSetup = document.getElementById("debug")
+        
+        if(lavelElementSetup!=undefined){
+            lavelElementSetup.id ="setup";
+            lavelElementSetup.innerText = messages[currentLanguage].setup;
+        }
+        
+        document.getElementById('damage').value=8;
+        document.getElementById('input_Setup').value=1;
+        document.getElementById('input_ADD').value=8;
         
     }
     if (type == "cardtype_RadiantMaestro"){
@@ -755,6 +824,12 @@ function changePreset(Mode,Type){//Mode:Calculator,TargetDamage
         Presetname[3]="The_Undying_SP";
     }
     
+    if (Type=="cardtype_LustrousHeroicKing"){
+        Presetargument[0]="(8,NaN,NaN,1,NaN,NaN,1,8)";
+        Presetname[0]="Lustrous_Heroic_King";
+        Presetargument[1]="(28,NaN,NaN,1,NaN,NaN,2,8)";
+        Presetname[1]="Lustrous_Heroic_King_SP";
+    }
     
     if (Type=="cardtype_RadiantMaestro"){
         Presetargument[0]="(5,NaN,NaN,1,NaN,NaN,1,1)";
