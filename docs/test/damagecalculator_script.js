@@ -355,6 +355,12 @@
                 document.getElementById('a2').checked=true;
             }
             
+            if (Type=="cardtype_LustrousHeroicKing"){
+                document.getElementById('damage').value = 8;
+                document.getElementById('input_Setup').value = 1;
+                document.getElementById('input_ADD').value = 8;
+            }
+            
             if (Type=="cardtype_RadiantMaestro"){
                 document.getElementById('damage').value = 5;
                 document.getElementById('input_Setup').value=1;

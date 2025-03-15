@@ -474,6 +474,13 @@ function targetdamage_clearInput() {
                 document.getElementById('targetdamage_a2').checked=true;
             }
             
+            if (Type=="cardtype_LustrousHeroicKing"){
+                document.getElementById('targetdamage_input_basedamage').value = 8;
+                document.getElementById('targetdamage_input_Setup').value = 1;
+                document.getElementById('targetdamage_input_ADD').value = 8;
+            }
+    
+    
             if (Type=="cardtype_RadiantMaestro"){
                 document.getElementById('targetdamage_input_basedamage').value = 5;
                 document.getElementById('targetdamage_input_Setup').value=1;
